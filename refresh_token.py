@@ -49,16 +49,19 @@ def update_token(token, file_path="secret.json"):
 if __name__ == "__main__":
     login_response = send_request(LOGIN_URL, data)
     login_info = login_response.get('data', {})
-    login_account_list = login_info.get('loginAccountList', [])
-    if not login_account_list:
-        print('请填充账号密码')
-        exit(1)
-    del login_account_list[0]
-    login_info['loginAccountList'] = login_account_list
-    token_response = send_request(TOKEN_URL, login_info)
-    token = token_response.get('data', {}).get('accessToken', '')
-    if not token:
-        print('没有token')
+    tmp = login_info.get('accessToken', '')
+    if tmp:
+        update_token(tmp)
     else:
-        update_token(token)
-
+        login_account_list = login_info.get('loginAccountList', [])
+        if not login_account_list:
+            print('请填充账号密码')
+            exit(1)
+        del login_account_list[0]
+        login_info['loginAccountList'] = login_account_list
+        token_response = send_request(TOKEN_URL, login_info)
+        token = token_response.get('data', {}).get('accessToken', '')
+        if not token:
+            print('没有token')
+        else:
+            update_token(token)
