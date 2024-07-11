@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/majorSelector/majorSelector",
+    "pages/bookList/bookList"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "星空选书",
+    "navigationBarBackgroundColor": "#f6f6f6"
+  },
+  "usingComponents": {
+    "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-cell": "tdesign-miniprogram/cell/cell",
+    "t-search": "tdesign-miniprogram/search/search",
+    "t-loading": "tdesign-miniprogram/loading/loading",
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-result": "tdesign-miniprogram/result/result",
+    "t-divider": "tdesign-miniprogram/divider/divider",
+    "t-collapse": "tdesign-miniprogram/collapse/collapse",
+    "t-link": "tdesign-miniprogram/link/link",
+    "t-message": "tdesign-miniprogram/message/message",
+    "t-collapse-panel": "tdesign-miniprogram/collapse-panel/collapse-panel"
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

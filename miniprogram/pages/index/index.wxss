@@ -1,0 +1,12 @@
+/**index.wxss**/
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(246,246,246);
+}
+.title{
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 1em auto 2em;
+}

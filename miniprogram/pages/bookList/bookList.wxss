@@ -1,0 +1,49 @@
+/* pages/bookList/bookList.wxss */
+page {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(246,246,246);
+}
+
+.title{
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 1em auto 1em;
+}
+
+.loading-container-flex {
+  display: flex;
+  height: 55%;
+  justify-content: center;
+  align-items: center;
+}
+
+.large {
+  --td-loading-text-font-size: 32rpx;
+}
+
+.external-class-image {
+  width: 300px;
+  height: 300px;
+}
+
+.button {
+  margin: 32rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.link {
+  background-color: var(--bg-color-demo);
+  color: #0052d9;
+}
+
+.panel{
+  display: grid;
+  grid-template-rows: auto auto auto;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+}

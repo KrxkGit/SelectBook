@@ -1,0 +1,46 @@
+<!--pages/majorSelector.wxml-->
+<t-cell-group theme="card">
+  <view class="title">选择专业</view>
+  <view class="search">
+  <t-search placeholder="找不到专业？试着搜索一下" bind:change="onChangeValue" />
+</view>
+<block wx:if="{{searchQuery}}">
+    <block wx:if="{{resultList.length > 0}}">
+      <block wx:for="{{resultList}}" wx:key="majorId">
+        <t-cell title="{{item.majorName}}" bindtap="handleCellClick" data-id="{{item.majorId}}" hover arrow />
+      </block>
+    </block>
+    <block wx:else>
+      <t-result t-class-image="external-class-image" image="/src/images/not-found.svg">
+  <view slot="title"> 无可用专业 </view>
+  <view slot="description"> 你的输入似乎有些拼写错误... </view>
+  </t-result>
+    </block>
+  </block>
+  <block wx:else>
+    <block wx:for="{{majors}}" wx:key="majorId">
+      <t-cell title="{{item.majorName}}" bindtap="handleCellClick" data-id="{{item.majorId}}" data-title="{{item.majorName}}" hover arrow />
+    </block>
+  </block>
+  <view class="block"></view>
+</t-cell-group>
+
+<view class="loading-container-flex" wx:if="{{loadingState=='0'}}">
+  <t-loading theme="circular" size="64rpx" text="正在加载，好快好快..." class="large" />
+</view>
+<view wx:if="{{loadingState=='2'}}">
+  <t-result t-class-image="external-class-image" image="/src/images/network-error.svg">
+  <view slot="title"> 网络错误 </view>
+  <view slot="description"> 别急，这或许不是你的问题。不妨再试一次？ </view>
+  </t-result>
+  <view class="button">
+  <t-button size="large" theme="light" variant="outline" bindtap="goback" block>返回</t-button>
+  </view>
+</view>
+
+<block wx:if="{{loadingState==1 && majors.length == 0}}">
+      <t-result t-class-image="external-class-image" image="/src/images/not-found.svg">
+  <view slot="title"> 无可用专业 </view>
+  <view slot="description"> 暂时还没有专业列表，过段时间再来看看吧 </view>
+  </t-result>
+</block>

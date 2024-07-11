@@ -1,0 +1,7 @@
+<!--index.wxml-->
+<t-cell-group theme="card">
+  <view class="title">选择年级</view>
+  <block wx:for="{{grades}}" wx:key="id">
+    <t-cell title="{{item.title}}" bindtap="handleCellClick" data-id="{{item.id}}" leftIcon="{{item.icon}}" hover arrow />
+  </block>
+</t-cell-group>

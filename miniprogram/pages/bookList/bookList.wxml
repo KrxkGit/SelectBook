@@ -1,0 +1,36 @@
+<!--pages/bookList/bookList.wxml-->
+<t-cell-group theme="card">
+  <view class="title">书籍列表</view>
+</t-cell-group>
+<t-collapse theme="card" defaultValue="{{[0]}}" expandMutex expandIcon>
+  <block wx:for="{{books}}" wx:key="price">
+    <t-collapse-panel header="{{item.title}}" value="{{index + 1}}">
+    <block class="panel">
+    <view>课程名称：{{item.courseName}}</view>
+    <view>任课教师：{{item.teacherNames}}</view>
+    <view>开课学院：{{item.courseCollegeName}}</view>
+    <view class="row">书籍名称：{{item.title}}<t-icon name="file-copy" size="16" data-info="{{item.title}}" bind:click="copyToClipBoard" /></view>
+    <view class="row">ISBN：{{item.isbn}}  <t-icon name="file-copy" size="16" data-info="{{item.isbn}}" bind:click="copyToClipBoard" /></view>
+    <view>出版社：{{item.pressName}}</view>
+    </block>
+    <block class="row">
+      <view class="row">作者：<view data-isbn="{{item.isbn}}" data-index="{{index}}" bindtap="queryAuthor" class="link">{{item.author}}</view>
+      </view>
+    </block>
+  </t-collapse-panel>
+  </block>
+</t-collapse>
+<t-divider wx:if="{{majorName}}" content="{{majorName}}" />
+<view class="loading-container-flex" wx:if="{{loadingState=='0'}}">
+  <t-loading theme="circular" size="64rpx" view="正在加载，好快好快..." class="large" />
+</view>
+<view wx:if="{{loadingState=='2'}}">
+  <t-result t-class-image="external-class-image" image="/src/images/network-error.svg">
+  <view slot="title"> 网络错误 </view>
+  <view slot="description"> 别急，这或许不是你的问题。不妨再试一次？ </view>
+  </t-result>
+  <view class="button">
+  <t-button size="large" theme="light" variant="outline" bindtap="goback" block>返回</t-button>
+  </view>
+</view>
+<t-message id="t-message" />
